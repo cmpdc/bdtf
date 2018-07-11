@@ -1,0 +1,32 @@
+@keyframes statusChanger{
+    0% {
+        opacity: 0;
+        transform: translate(0, 80px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeFromTop-tooltip {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -50%, 0);
+    	}
+   	100% {
+       		opacity: 0.9;
+        	transform: none;
+    	}
+}
+
+@keyframes fadeFromBottom-tooltip {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 50%, 0);
+    	}
+   	100% {
+       		opacity: 0.9;
+        	transform: none;
+    	}
+}

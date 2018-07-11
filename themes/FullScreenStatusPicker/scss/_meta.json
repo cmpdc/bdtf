@@ -1,0 +1,10 @@
+{
+    "main": {
+        "name": "FullScreenStatusPicker",
+        "description": "A customized full screen look of status picker",
+        "author": "uri",
+        "version": "0.1",
+        "website": "https://cmpdc.github.io/",
+        "source": ""
+    }
+}
