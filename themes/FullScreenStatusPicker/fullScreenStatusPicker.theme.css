@@ -1,5 +1,7 @@
 /*//META{"name":"FullScreenStatusPicker","description":"A customized full screen look of status picker","author":"uri","version":"0.1","website":"https://cmpdc.github.io/","source":""}*//**/
 
+@import url(https://cmpdc.github.io/bdtf/themes/FullScreenStatusPicker/css/min.css);
+
 :root {
     --sPickerOnlineBGColour: #43b581;
     --sPickerIdleBGColour: #faa61a;
