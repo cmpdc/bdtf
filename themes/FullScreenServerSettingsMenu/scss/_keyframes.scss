@@ -1,0 +1,43 @@
+@keyframes serverMenuFromTop{
+    0% {
+        opacity: 0;
+        transform: translate(0, -80px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes serverMenuFromBottom{
+    0% {
+        opacity: 0;
+        transform: translate(0, 80px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeFromTop-tooltip {
+	0%{
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0);
+	}
+   	100%{
+		opacity: 0.9;
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+@keyframes fadeFromBottom-tooltip {
+	0%{
+		opacity: 0;
+		transform: translate3d(-50%, 50%, 0);
+	}
+   	100%{
+		opacity: 0.9;
+		transform: translate3d(-50%, 0, 0);
+	}
+}

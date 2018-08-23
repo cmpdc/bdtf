@@ -1,0 +1,285 @@
+.#{$appMount}{
+
+    $MenuWidth: 560px;
+    $MenuHeight: 300px;
+    $MenuShadow: 0 2px 10px $bgAlpha04;
+
+    .#{$popout}.#{$popoutBottom}{
+        &[style*="left: 190px;"]{
+            width: $MenuWidth!important;
+            height: $MenuHeight!important;
+            box-shadow: none!important;
+            margin: 0;
+            position: absolute;
+            top: 50%!important;
+            right: initial!important;
+            bottom: initial!important;
+            left: 50%!important;
+            transform: translate(-50%, calc(50vh - 50%)) translateZ(0px)!important;
+            overflow: visible!important;
+            z-index: 1000!important;
+
+            &:before{
+                content: "";
+                width: 100vw;
+                height: 100vh;
+                background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
+                position: absolute;
+                top: 50%;
+                right: 0;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, -50%) translateZ(0px);
+                pointer-events: none;
+            }
+        }
+    }
+
+    .#{$popoutMenu}:not(.#{$popoutMenuAlt}){
+        width: $MenuWidth;
+        height: $MenuHeight;
+        box-shadow: none;
+        background: none!important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0!important;
+        display: flex;
+        flex-flow: row wrap;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%) translateZ(0px);
+        overflow: visible;
+
+        .#{$serverSettingsMenuSeparator}{
+            display: none;
+        }
+
+        .#{$serverSettingsMenuItem}{
+            width: 80px;
+            height: 80px;
+            padding: 0;
+            background-color: transparent!important;
+            border-radius: 50%;
+            margin: 15px;
+            position: relative;
+            transition: opacity 200ms;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            animation-direction: normal;
+            animation-duration: 500ms;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-play-state: running;
+            overflow: visible;
+            pointer-events: auto;
+            
+            &:nth-child(-n + 7){
+                animation-name: serverMenuFromTop;
+
+                .#{$serverSettingsMenuLabel}{
+                    top: -45px;
+                    animation: fadeFromTop-tooltip 500ms forwards;
+
+                    &:before{
+                        bottom: -6px;
+                        -webkit-clip-path: polygon(0 0, 50% 100%, 100% 0);
+                    }
+                }
+            }
+
+            @for $i from 0 to 8{
+                &:nth-child(#{$i}){
+                    animation-delay: 100 + ($i - 1) * 50ms!important;
+                }
+            }
+
+            &:nth-child(n + 8){
+                animation-name: serverMenuFromBottom;
+
+                .#{$serverSettingsMenuLabel}{
+                    bottom: -50px;
+                    animation: fadeFromBottom-tooltip 500ms forwards;
+
+                    &:before{
+                        top: -5px;
+                        -webkit-clip-path: polygon(50% 0, 0 100%, 100% 100%);
+                    }
+                }
+            }
+
+            @for $i from 8 to 15{
+                &:nth-child(#{$i}){
+                    animation-delay: 100 + ($i - 8) * 50ms!important;
+                }
+            }
+        
+            &:hover{
+                opacity: 1;
+
+                .#{$serverSettingsMenuLabel}{
+                    opacity: 1;
+                    display: block;
+                }
+
+                .#{$serverSettingsMenuIcon}{
+                    transform: scale(1.1) translateZ(0px);
+                }
+            }
+        }
+        
+        .#{$serverSettingsMenuLabel}{
+            width: auto;
+            height: auto;
+            color: #fff!important;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 1px $bgAlpha03;
+            border-radius: 3px;
+            padding: 5px;
+            margin: 0!important;
+            white-space: nowrap;
+            position: absolute;
+            left: 50%;
+            display: none;
+            opacity: 0;
+            transition: opacity 200ms;
+            overflow: visible!important;
+            box-sizing: border-box;
+            pointer-events: none;
+            z-index: 2;
+        
+            &:before{
+                content: "";
+                width: 20px;
+                height: 8px;
+                background-color: inherit;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0);
+                pointer-events: none;
+            }
+        }
+        
+        .#{$serverSettingsMenuIcon}{
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            border-radius: inherit;
+            box-shadow: $MenuShadow;
+            margin: 0;
+            opacity: 1;
+            transition: transform 200ms;
+            overflow: hidden;
+
+            // Invite
+            &[style*="/assets/d4ff0d2af68cd1119f0d16ef79d1369c.svg"]{
+                background-color: var(--ssColourInvite);
+                background-image: var(--ssIconInvite)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourInvite);
+                }
+            }
+
+            // Server Settings
+            &[style*="/assets/9a93097ab591379729c68f15a17b26af.svg"]{
+                background-color: var(--ssColourServerSettings);
+                background-image: var(--ssIconServerSettings)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourServerSettings);
+                }
+            }
+
+            // Create Channel
+            &[style*="/assets/2fc862597335421b35a79aa9aaba4a86.svg"]{
+                background-color: var(--ssColourCreateChannel);
+                background-image: var(--ssIconCreateChannel)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourCreateChannel);
+                }
+            }
+
+            // Create Category
+            &[style*="/assets/52bc30f8a2b1a51f808a785819ca00b5.svg"]{
+                background-color: var(--ssColourCreateCategory);
+                background-image: var(--ssIconCreateCategory)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourCreateCategory);
+                }
+            }
+
+            // Notification Settings
+            &[style*="/assets/6a711bd91522e885413464a88a4e3c69.svg"]{
+                background-color: var(--ssColourNotification);
+                background-image: var(--ssIconNotification)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourNotification);
+                }
+            }
+
+            // Privacy Settings
+            &[style*="/assets/6afcd5d6a8c9d467e27e1bb48755dce0.svg"]{
+                background-color: var(--ssColourPrivacy);
+                background-image: var(--ssIconPrivacy)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourPrivacy);
+                }
+            }
+
+            // Change Nickname
+            &[style*="/assets/bc11a9099f5729962c095cb49d5042f6.svg"]{
+                background-color: var(--ssColourNickname);
+                background-image: var(--ssIconNickname)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourNickname);
+                }
+            }
+
+            // Hide Muted Channel
+            &[style*="/assets/858df73648ac3877a22156da2e69a5fd.svg"],
+            &[style*="/assets/50f8ef2cdb4e7697a4202fb9c6d0e1fc.svg"]{
+                background-color: var(--ssColourHidden);
+                
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourHidden);
+                }
+            }
+
+            // -- hidden
+            &[style*="/assets/858df73648ac3877a22156da2e69a5fd.svg"]{
+                background-image: var(--ssIconHiddenIsShown)!important;
+            }
+            
+            // -- show
+            &[style*="/assets/50f8ef2cdb4e7697a4202fb9c6d0e1fc.svg"]{
+                background-image: var(--ssIconHiddenIsHidden)!important;
+            }
+
+            // Leave Server
+            &[style*="/assets/00de6b3cbb5c4dbcec817c91262f5f5b.svg"]{
+                background-color: var(--ssColourLeave);
+                background-image: var(--ssIconLeave)!important;
+
+                ~ .#{$serverSettingsMenuLabel}{
+                    background-color: var(--ssColourLeave);
+                }
+            }
+
+        }
+    }
+}
