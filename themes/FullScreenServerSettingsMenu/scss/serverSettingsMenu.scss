@@ -1,13 +1,9 @@
 .#{$appMount}{
-
-    $MenuWidth: 560px;
-    $MenuHeight: 300px;
-    $MenuShadow: 0 2px 10px $bgAlpha04;
-
     .#{$popout}.#{$popoutBottom}{
-        &[style*="left: 190px;"]{
-            width: $MenuWidth!important;
-            height: $MenuHeight!important;
+        &:not(.#{$popoutNoShadow}){
+            width: 100vw!important;
+            height: 100vh!important;
+            background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
             box-shadow: none!important;
             margin: 0;
             position: absolute;
@@ -18,22 +14,13 @@
             transform: translate(-50%, calc(50vh - 50%)) translateZ(0px)!important;
             overflow: visible!important;
             z-index: 1000!important;
-
-            &:before{
-                content: "";
-                width: 100vw;
-                height: 100vh;
-                background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
-                position: absolute;
-                top: 50%;
-                right: 0;
-                bottom: 0;
-                left: 50%;
-                transform: translate(-50%, -50%) translateZ(0px);
-                pointer-events: none;
-            }
+            pointer-events: none;
         }
     }
+
+    $MenuWidth: 560px;
+    $MenuHeight: 300px;
+    $MenuShadow: 0 2px 10px $bgAlpha04;
 
     .#{$popoutMenu}:not(.#{$popoutMenuAlt}){
         width: $MenuWidth;
@@ -51,6 +38,7 @@
         justify-content: center;
         transform: translate(-50%, -50%) translateZ(0px);
         overflow: visible;
+        pointer-events: none;
 
         .#{$serverSettingsMenuSeparator}{
             display: none;

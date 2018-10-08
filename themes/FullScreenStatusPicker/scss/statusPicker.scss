@@ -1,31 +1,17 @@
 .#{$appMount}{
     .#{$popout}.#{$popoutTopLeft}{
-        &[style*="left: 80px;"]{
-            width: 100vw!important;
-            height: 100vh!important;
-            box-shadow: none!important;
-            position: absolute;
-            top: initial!important;
-            right: initial!important;
-            bottom: initial!important;
-            left: initial!important;
-            transform: none!important;
-            overflow: visible!important;
-            z-index: 10001!important;
-
-
-            &:before{
-                content: "";
-                width: inherit;
-                height: inherit;
-                background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
-                position: absolute;
-                top: 14px; // why??
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
-        }
+        width: 100vw!important;
+        height: 100vh!important;
+        background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%)!important;
+        box-shadow: none!important;
+        position: absolute;
+        top: initial!important;
+        right: initial!important;
+        bottom: initial!important;
+        left: initial!important;
+        transform: none!important;
+        overflow: visible!important;
+        z-index: 10001!important;        
     }
 
     .#{$popoutMenu}.#{$popoutAlt}{
