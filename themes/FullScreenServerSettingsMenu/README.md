@@ -8,5 +8,6 @@ Both `background-color` and `background-image` are set to a css `var` so its eas
 ![Preview](https://i.imgur.com/H0do3jA.gif)
 
 ## Change log
+v0.3 - fix conflicts with message option box<br/>
 v0.2 - added fix for users with personal discord customizations<br/>
 v0.1 - Initial Release

@@ -1,20 +1,22 @@
 .#{$appMount}{
     .#{$popout}.#{$popoutBottom}{
-        &:not(.#{$popoutNoShadow}){
-            width: 100vw!important;
-            height: 100vh!important;
-            background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
-            box-shadow: none!important;
-            margin: 0;
-            position: absolute;
-            top: 50%!important;
-            right: initial!important;
-            bottom: initial!important;
-            left: 50%!important;
-            transform: translate(-50%, calc(50vh - 50%)) translateZ(0px)!important;
-            overflow: visible!important;
-            z-index: 1000!important;
-            pointer-events: none;
+        &:not(.#{$popoutNoShadow}){ // conflicts with other popouts such as activity invites and/or message options
+            &:not([style*="transform"]){
+                width: 100vw!important;
+                height: 100vh!important;
+                background-image: -webkit-radial-gradient(center, ellipse cover, transparent 0%, rgba(0, 0, 0, 1) 100%);
+                box-shadow: none!important;
+                margin: 0;
+                position: absolute;
+                top: 50%!important;
+                right: initial!important;
+                bottom: initial!important;
+                left: 50%!important;
+                transform: translate(-50%, calc(50vh - 50%)) translateZ(0px)!important;
+                overflow: visible!important;
+                z-index: 1000!important;
+                pointer-events: none;
+            }
         }
     }
 
